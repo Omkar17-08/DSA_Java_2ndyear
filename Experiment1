@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.time.LocalTime;
+class Vehicle {
+    String type;
+    int numberOfTyres;
+    int cc;
+
+   
+    public Vehicle(String type, int numberOfTyres, int cc) {
+        this.type = type;
+        this.numberOfTyres = numberOfTyres;
+        this.cc = cc;
+    }
+
+   
+    public void displayDetails() {
+        System.out.println("Type: " + type + ", Tyres: " + numberOfTyres + ", CC: " + cc);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LocalTime currentTime = LocalTime.now();
+        System.out.println("current Local Time " + currentTime);
+
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+
+        vehicles.add(new Vehicle("Car", 4, 2000));
+        vehicles.add(new Vehicle("Bike", 2, 650));
+        vehicles.add(new Vehicle("Truck", 10, 5000));
+        vehicles.add(new Vehicle("Auto", 3, 350));
+
+       
+        Scanner scanner = new Scanner(System.in); 
+
+        System.out.print("Enter the vehicle type (Car, Bike, Truck, Auto): ");
+        String inputType = scanner.nextLine();
+     
+        scanner.close(); 
+        
+        boolean vehicleFound = false;
+        for (Vehicle vehicle : vehicles) {
+           
+            if (vehicle.type.equalsIgnoreCase(inputType)) {
+                System.out.println("\nVehicle details for " + inputType + ":");
+                vehicle.displayDetails();
+                vehicleFound = true;
+                break; 
+            }
+        }
+
+        if (!vehicleFound) {
+            System.out.println("\nNo matching vehicle found for type: " + inputType);
+        }
+    }
+    
+}
+
+
+     
